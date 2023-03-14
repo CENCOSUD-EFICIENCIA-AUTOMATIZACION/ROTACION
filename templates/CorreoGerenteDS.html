@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Verdana, sans-serif, 'Segoe UI', Tahoma, Geneva;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        thead {
+            background: #3A4F7A;
+            color: white;
+            text-transform: capitalize;
+        }
+       th, td {
+            border: 1px solid black;
+            padding: 10px;   
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            Buenas tardes José Pablo,<br><br>
+        </div>
+        <div>
+            Te comparto las Solpeds aprobadas por los gerentes de cada bandera que faltan por aprobar.
+            <br>
+            En total son {{ROWS}}.
+            <br><br>
+        </div>
+    </div>
+    <div>
+        {{TABLA}}
+    </div>
+    <div>
+        <br><br>
+        Saludos.
+    </div>
+</body>
+</html>

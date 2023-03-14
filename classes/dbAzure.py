@@ -58,7 +58,8 @@ class DBAzure:
     def getQuerySolpeds(self):
         self.query = f"""
             SELECT *
-            FROM solped_capex
+            FROM equipos_frio_DS
+            WHERE ESTADO_CORREO = 'POR_ENVIAR'
             order by id desc
         """
         return pd.read_sql(self.query, self.connection)
@@ -236,3 +237,11 @@ class DBAzure:
             WHERE solped = '{solped}'
         """
         return pd.read_sql_query(self.query, self.connection)
+    
+    def changeStatusSolped(self, equipos):
+        self.query = f"""
+            UPDATE equipos_frio_DS
+            SET ESTADO_CORREO = '{equipos['ESTADO_CORREO']}'
+            WHERE id = '{equipos['id']}'
+        """
+        self.editQuery()
