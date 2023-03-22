@@ -66,42 +66,49 @@ class DBAzure:
 
 
     def createSolped(self, solped):
-        solped["Nombre Local"] = solped["Nombre Local"].replace("'", '')
         self.query = f"""
             SET NOCOUNT ON
-            INSERT INTO solped_capex (
-                solped,
-                year_reporte,
-                ocs,
-                bandera,
-                centro,
-                nombre_local,
-                familia,
-                descripcion,
-                monto,
-                estado,
-                fecha_creacion,
-                fecha_modificacion,
-                estado_trabajo,
-                bandera_estandarizada,
-                estado_trabajo_estandarizado
+            INSERT INTO equipos_frio_DS (
+                nombreMaquina,
+                NUMERO_SERIE,
+                TIPO_DE_EQUIPO,
+                ZONA,
+                temperaturaMinima,
+                temperaturaMaxima,
+                ESTADO,
+                nombreLocal,
+                ESTADO_CORREO,
+                created_at,
+                updated_at,
+                OTRO,
+                OBSERVACION,
+                MODELO,
+                Creado,
+                DESCRIPCION,
+                ORDEN_COMPRA,
+                Modificado,
+                Observaciones
             )
             VALUES(
-                '{int(solped["Solped"])}',
-                '{solped["year"]}',
-                '0',
-                '{solped["UN"]}',
-                '{solped["Locación"]}',
-                '{solped["Nombre Local"]}',
-                '{solped["FAMILIA"]}',
-                '{solped["Detalle"]}',
-                '{solped["Total ML"]}',
-                'CREADA',
+                '{solped["nombreMaquina"]}',
+                '{solped["NUMERO_SERIE"]}',
+                '{solped["TIPO_DE_EQUIPO"]}',
+                '{solped["ZONA"]}',
+                '{solped["temperaturaMinima"]}',
+                '{solped["temperaturaMaxima"]}',
+                '{solped["ESTADO"]}',
+                '{solped["nombreLocal"]}',
+                '{solped["ESTADO_CORREO"]}',
                 '{datetime.today().strftime("%Y-%m-%d %H:%M:%S")}',
                 '{datetime.today().strftime("%Y-%m-%d %H:%M:%S")}',
-                '{solped["Estatus trabajos"]}',
-                '{solped["UNIDAD"]}',
-                '{solped["STATUS TRABAJO"]}'
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                ''
             )
             SELECT @@IDENTITY;
         """
