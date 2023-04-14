@@ -63,7 +63,23 @@ class DBAzure:
             order by id desc
         """
         return pd.read_sql(self.query, self.connection)
+    
+    def getQuerySolpedsHistorico(self):
+        self.query = f"""
+            SELECT *
+            FROM historico_equipos_frio_DS
+            order by id desc
+        """
+        return pd.read_sql(self.query, self.connection)
 
+    def getQueryRegistrosDiarios(self):
+        self.query = f"""
+            SELECT *
+            FROM equipos_frio_DS
+            WHERE ESTADO_CORREO_DIARIO = 'POR_ENVIAR'
+            order by id desc
+        """
+        return pd.read_sql(self.query, self.connection)
 
     def createSolped(self, solped):
         self.query = f"""

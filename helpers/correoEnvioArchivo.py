@@ -24,7 +24,7 @@ def correoEnvioArchivo(asunto, body, correos, archivos):
     </html>
     """
     asunto          = f'{asunto} {fechaHora}'
-    fromaddr        = "robotrocket1@cencosud.cl"
+    fromaddr        = "robotrocket2@cencosud.cl"
     to              = correos["to"]
     cc              = correos["cc"]
     bcc             = correos["bcc"]
@@ -68,7 +68,7 @@ def correoEnvioArchivo(asunto, body, correos, archivos):
     # start TLS for security
     s.starttls()
     # Authentication
-    s.login(fromaddr, "Q1w2e3r4")
+    s.login(fromaddr, "h4v8d2x4")
     # Converts the Multipart msg into a string
     text = msg.as_string()
     # sending the mail
