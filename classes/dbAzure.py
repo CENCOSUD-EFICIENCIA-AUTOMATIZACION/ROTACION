@@ -64,6 +64,24 @@ class DBAzure:
         """
         return pd.read_sql(self.query, self.connection)
     
+    def getLocales(self):
+        self.query = f"""
+            SELECT *
+            FROM equipos_frio_DS
+            WHERE OTRO = '1'
+            order by id desc
+        """
+        return pd.read_sql(self.query, self.connection)
+    
+    def getRegistroLocales(self, local):
+        self.query = f"""
+            SELECT *
+            FROM historico_equipos_frio_DS
+            WHERE Local = '{local}'
+            order by id desc
+        """
+        return pd.read_sql(self.query, self.connection)
+
     def getQuerySolpedsHistorico(self):
         self.query = f"""
             SELECT *
