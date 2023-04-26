@@ -68,7 +68,7 @@ class DBAzure:
         self.query = f"""
             SELECT *
             FROM equipos_frio_DS
-            WHERE OTRO = '1'
+            WHERE OTRO LIKE 'DIARIO%'   
             order by id desc
         """
         return pd.read_sql(self.query, self.connection)
@@ -283,6 +283,14 @@ class DBAzure:
         self.query = f"""
             UPDATE equipos_frio_DS
             SET ESTADO_CORREO = '{equipos['ESTADO_CORREO']}'
+            WHERE id = '{equipos['id']}'
+        """
+        self.editQuery()
+
+    def changeStatusEquipo(self, equipos):
+        self.query = f"""
+            UPDATE equipos_frio_DS
+            SET OTRO = 'NO'
             WHERE id = '{equipos['id']}'
         """
         self.editQuery()
